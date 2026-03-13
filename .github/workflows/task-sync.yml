@@ -1,0 +1,34 @@
+name: sync-docker-images
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore: [ "*.md" ]
+  pull_request:
+    branches: [ "main" ]
+    paths-ignore: [ "*.md" ]
+  workflow_dispatch:  # Allows you to run this workflow manually from the Actions tab
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ## Sync all images defined in `task-sync-docker-images/images.yaml`
+  sync_images:
+    # needs: []
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - env:
+          AUTH_FILE_CONTENT: ${{ secrets.AUTH_FILE_CONTENT }}
+        run: |
+          printf '%s' "$AUTH_FILE_CONTENT" > .github/workflows/auth.json && ls -alh ./.github/workflows
+          printenv | grep -v 'PATH' > /tmp/docker.env
+          docker run --rm --env-file /tmp/docker.env \
+            -e XDG_RUNTIME_DIR="" \
+            -v $(pwd):/tmp -w /tmp\
+            labnow/docker-kit \
+            image-syncer --proc=8 --retries=2 \
+            --images /tmp/task-sync-docker-images/images.yaml \
+            --auth /tmp/.github/workflows/auth.json
