@@ -4,8 +4,8 @@
 
 ## 项目用途
 
-- 使用 `task-sync-docker-images/images.yaml` 定义需要同步的镜像及目标仓库。
-- 通过 GitHub Actions 工作流，使用 `labnow/docker-kit` 容器中的 `image-syncer` 执行同步。
+- 使用 [`task-sync-docker-images/images.yaml`](task-sync-docker-images/images.yaml) 定义需要同步的镜像及目标仓库。
+- 通过 GitHub Actions 工作流，使用 [labnow/docker-kit](https://github.com/LabNow-ai/lab-foundation/tree/main/docker_docker_kit) 容器中的 [image-syncer](https://github.com/AliyunContainerService/image-syncer/blob/master/README-zh_CN.md) 执行同步。
 - 按配置将镜像推送到目标仓库。
 
 ## 使用方式（Fork + 自定义）
