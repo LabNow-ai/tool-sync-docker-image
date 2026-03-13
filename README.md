@@ -1,32 +1,22 @@
 # Task Sync Docker Images
 
-This task sync docker images from source registries to target registries based on the configuration files.
+This repository provides an automated GitHub Actions workflow to sync container images from source registries to mirror registries. It is designed for teams that need repeatable, auditable image mirroring using a simple YAML configuration.
 
-```shell
-docker run -it --rm -v $(pwd):/root/app -w /root/app docker.io/labnow/docker-kit
+## What This Project Does
 
-image-syncer --proc=8 --retries=2 --images ./images.yaml --auth ./auth.json
-```
+- Defines image mappings in `task-sync-docker-images/images.yaml`.
+- Runs a GitHub Actions workflow that uses `image-syncer` inside `labnow/docker-kit`.
+- Pushes images to target registries based on the mappings.
 
-To sync images in batch, two config files (or combine them in one as `--config`) are needed.
+## How to Use (Fork + Customize)
 
-The `auth.yaml` file should look like:
+1. Fork this repository to your own GitHub org or account.
+2. Edit `task-sync-docker-images/images.yaml` to add or update the images and target registries you want to mirror.
+3. Create a repository secret named `AUTH_FILE_CONTENT` containing your registry credentials in JSON format (see `task-sync-docker-images/README.md` for an example).
+4. Trigger the workflow:
+   - Manually via the Actions tab using the `sync-docker-images` workflow.
+   - Or by pushing changes to `main` (the workflow ignores `*.md` changes).
 
-```yaml
-docker.io:
-  username: ""
-  password: ""
-  insecure: true
-registry.cn-hangzhou.aliyuncs.com:
-  username: ""
-  password: ""
-  insecure: true
-```
+## Manual Local Run
 
-The `images.yaml` file should look like:
-
-```yaml
-quay.io/labnow/docker-kit:
-  - docker.io/labnow/docker-kit
-  - registry.cn-hangzhou.aliyuncs.com/labnow/docker-kit
-```
+If you want to run the sync locally (or in GitHub Codespaces), follow the instructions in `task-sync-docker-images/README.md`.
