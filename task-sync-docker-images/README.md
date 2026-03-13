@@ -55,27 +55,27 @@ registry.cn-hangzhou.aliyuncs.com:
 
 ### auth.json Example
 
-Notice: the `AUTH_FILE_CONTENT` use this format by compact the JSON string into a single line.
+Notice: the `AUTH_FILE_CONTENT` environment variable use this format by compact the JSON string into a single line.
 
 ```json
 {
   "docker.io": {
-    "username": "<your-docker-io-username>",
-    "password": "<your-docker-io-password>",
+    "username": "your-docker-io-username",
+    "password": "your-docker-io-password",
     "insecure": true
   },
   "quay.io": {
-    "username": "<your-quay-io-username>",
-    "password": "<your-quay-io-password>",
+    "username": "your-quay-io-username",
+    "password": "your-quay-io-password",
     "insecure": true
   },
   "registry.cn-beijing.aliyuncs.com": {
-    "username": "<your-aliyun-acr-username>",
-    "password": "<your-aliyun-acr-password>"
+    "username": "your-aliyun-acr-username",
+    "password": "your-aliyun-acr-password"
   },
   "registry.cn-hangzhou.aliyuncs.com": {
-    "username": "<your-aliyun-acr-username>",
-    "password": "<your-aliyun-acr-password>"
+    "username": "your-aliyun-acr-username",
+    "password": "your-aliyun-acr-password"
   }
 }
 ```

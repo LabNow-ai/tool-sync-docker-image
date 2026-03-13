@@ -21,6 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - env:
+          # required to set AUTH_FILE_CONTENT secret in GitHub secrets for Actions
           AUTH_FILE_CONTENT: ${{ secrets.AUTH_FILE_CONTENT }}
         run: |
           printf '%s' "$AUTH_FILE_CONTENT" > .github/workflows/auth.json && ls -alh ./.github/workflows

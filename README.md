@@ -2,12 +2,12 @@
 
 This repository provides an automated GitHub Actions workflow to sync container images from source registries to mirror registries. It is designed for teams that need repeatable, auditable image mirroring using a simple YAML configuration.
 
-中文介绍: `README-zh_CN.md`
+[中文介绍](README-zh_CN.md)
 
 ## What This Project Does
 
-- Defines image mappings in `task-sync-docker-images/images.yaml`.
-- Runs a GitHub Actions workflow that uses `image-syncer` inside `labnow/docker-kit`.
+- Defines image mappings in [`task-sync-docker-images/images.yaml`](task-sync-docker-images/images.yaml).
+- Runs a GitHub Actions workflow that uses [image-syncer](https://github.com/AliyunContainerService/image-syncer/blob/master/README.md) inside [labnow/docker-kit](https://github.com/LabNow-ai/lab-foundation/tree/main/docker_docker_kit) to sync images.
 - Pushes images to target registries based on the mappings.
 
 ## How to Use (Fork + Customize)
