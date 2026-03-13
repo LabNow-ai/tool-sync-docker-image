@@ -3,7 +3,7 @@
 This task sync docker images from source registries to target registries based on the configuration files.
 
 ```shell
-docker run -it --rm -v $(pwd):/root/app -w /root/app docker.io/qpod/docker-kit
+docker run -it --rm -v $(pwd):/root/app -w /root/app docker.io/labnow/docker-kit
 
 image-syncer --proc=8 --retries=2 --images ./images.yaml --auth ./auth.json
 ```
@@ -26,7 +26,7 @@ registry.cn-hangzhou.aliyuncs.com:
 The `images.yaml` file should look like:
 
 ```yaml
-quay.io/qpod/docker-kit:
-  - docker.io/qpod/docker-kit
-  - registry.cn-hangzhou.aliyuncs.com/qpod/docker-kit
+quay.io/labnow/docker-kit:
+  - docker.io/labnow/docker-kit
+  - registry.cn-hangzhou.aliyuncs.com/labnow/docker-kit
 ```
