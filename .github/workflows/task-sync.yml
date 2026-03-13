@@ -25,7 +25,9 @@ jobs:
         run: |
           printf '%s' "$AUTH_FILE_CONTENT" > .github/workflows/auth.json && ls -alh ./.github/workflows
           printenv | grep -v 'PATH' > /tmp/docker.env
-          docker run --rm --env-file /tmp/docker.env -v $(pwd):/tmp -w /tmp\
+          docker run --rm --env-file /tmp/docker.env \
+            -e XDG_RUNTIME_DIR="" \
+            -v $(pwd):/tmp -w /tmp\
             labnow/docker-kit \
             image-syncer --proc=8 --retries=2 \
             --images /tmp/task-sync-docker-images/images.yaml \

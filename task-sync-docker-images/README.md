@@ -1,32 +1,26 @@
-# Task Sync Docker Images
+# Understanding the docker images sync process
 
-This task sync docker images from source registries to target registries based on the configuration files.
+如果需要手工来操作，可以在该目录下创建一个认证文件，例如：
 
-```shell
-docker run -it --rm -v $(pwd):/root/app -w /root/app docker.io/labnow/docker-kit
-
-image-syncer --proc=8 --retries=2 --images ./images.yaml --auth ./auth.json
-```
-
-To sync images in batch, two config files (or combine them in one as `--config`) are needed.
-
-The `auth.yaml` file should look like:
-
-```yaml
-docker.io:
-  username: ""
-  password: ""
-  insecure: true
-registry.cn-hangzhou.aliyuncs.com:
-  username: ""
-  password: ""
-  insecure: true
-```
-
-The `images.yaml` file should look like:
-
-```yaml
-quay.io/labnow/docker-kit:
-  - docker.io/labnow/docker-kit
-  - registry.cn-hangzhou.aliyuncs.com/labnow/docker-kit
+```auth.json
+{
+  "docker.io": {
+    "username": "<your-docker-io-username>",
+    "password": "<your-docker-io-password>",
+    "insecure": true
+  },
+  "quay.io": {
+    "username": "<your-quay-io-username>",
+    "password": "<your-quay-io-password>",
+    "insecure": true
+  },
+  "registry.cn-beijing.aliyuncs.com" : {
+    "username": "<your-aliyun-acr-username>",
+    "password": "<your-aliyun-acr-password>"
+  },
+  "registry.cn-hangzhou.aliyuncs.com" : {
+    "username": "<your-aliyun-acr-username>",
+    "password": "<your-aliyun-acr-password>"
+  }
+}
 ```
