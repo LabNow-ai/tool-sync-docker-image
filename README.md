@@ -2,6 +2,8 @@
 
 This repository provides an automated GitHub Actions workflow to sync container images from source registries to mirror registries. It is designed for teams that need repeatable, auditable image mirroring using a simple YAML configuration.
 
+中文介绍: `README-zh_CN.md`
+
 ## What This Project Does
 
 - Defines image mappings in `task-sync-docker-images/images.yaml`.

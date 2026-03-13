@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ## Sync all images in this build (listed by "names") to mirror registry.
+  ## Sync all images defined in `task-sync-docker-images/images.yaml`
   sync_images:
     # needs: []
     runs-on: ubuntu-latest
