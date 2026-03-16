@@ -8,7 +8,7 @@ docker.io/nvidia/cuda:12.6.3-cudnn-devel-ubuntu24.04,12.4.1-cudnn-devel-ubuntu22
 
 
 # Coder: https://github.com/coder/coder/pkgs/container/coder
-ghcr.io/coder/coder:latest
+ghcr.io/coder/coder:latest:
  - quay.io/labnow/nvidia-cuda
  - registry.cn-hangzhou.aliyuncs.com/labnow-oss/nvidia-cuda
  - registry.cn-beijing.aliyuncs.com/labnow-oss/nvidia-cuda
