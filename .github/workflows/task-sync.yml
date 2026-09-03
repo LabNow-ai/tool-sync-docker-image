@@ -13,23 +13,28 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
+env:
+  TZ: Asia/Shanghai
+  # required to set AUTH_FILE_CONTENT secret in GitHub secrets for Actions
+  AUTH_FILE_CONTENT: ${{ secrets.AUTH_FILE_CONTENT }}
+
+
 jobs:
   ## Sync all images defined in `task-sync-docker-images/images.yaml`
   sync_images:
     # needs: []
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - env:
-          # required to set AUTH_FILE_CONTENT secret in GitHub secrets for Actions
-          AUTH_FILE_CONTENT: ${{ secrets.AUTH_FILE_CONTENT }}
-        run: |
+      - uses: actions/checkout@v7
+      - run: |
           printf '%s' "$AUTH_FILE_CONTENT" > .github/workflows/auth.json && ls -alh ./.github/workflows
           printenv | grep -v 'PATH' > /tmp/docker.env
           docker run --rm --env-file /tmp/docker.env \
             -e XDG_RUNTIME_DIR="" \
             -v $(pwd):/tmp -w /tmp\
-            labnow/docker-kit \
-            image-syncer --proc=8 --retries=2 \
-            --images /tmp/task-sync-docker-images/images.yaml \
-            --auth /tmp/.github/workflows/auth.json
+            labnow/docker-kit image-syncer --proc=8 --retries=2 \
+              --auth /tmp/.github/workflows/auth.json \
+              --images /tmp/task-sync-docker-images/images-db.yaml

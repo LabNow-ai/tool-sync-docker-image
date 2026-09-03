@@ -34,6 +34,8 @@ Use either `auth.json` or `auth.yaml` and pass the corresponding path with `--au
 
 ### images.yaml Example
 
+Config reference: [image-syncer](https://github.com/AliyunContainerService/image-syncer/blob/master/README-zh_CN.md).
+
 ```yaml
 quay.io/labnow/docker-kit:
   - docker.io/labnow/docker-kit
