@@ -27,17 +27,18 @@ docker.io/minio/minio:latest,RELEASE.2023-12-20T01-00-02Z,RELEASE.2025-04-08T15-
 
 # Redpanda
 # - ref1: https://docs.redpanda.com/streaming/current/get-started/quick-start/
-docker.redpanda.com/redpandadata/redpanda:latest,v26:
+# - ref2: https://hub.docker.com/u/redpandadata
+docker.io/redpandadata/redpanda:latest,v26:
   - quay.io/labnow/redpanda
   - registry.cn-hangzhou.aliyuncs.com/labnow-oss/redpanda
   - registry.cn-beijing.aliyuncs.com/labnow-oss/redpanda
 
-docker.redpanda.com/redpandadata/console:latest,v3:
+docker.io/redpandadata/console:latest,v3:
   - quay.io/labnow/redpanda-console
   - registry.cn-hangzhou.aliyuncs.com/labnow-oss/redpanda-console
   - registry.cn-beijing.aliyuncs.com/labnow-oss/redpanda-console
 
-docker.redpanda.com/redpandadata/connect:latest:
+docker.io/redpandadata/connect:latest:
   - quay.io/labnow/redpanda-connnect
   - registry.cn-hangzhou.aliyuncs.com/labnow-oss/redpanda-connect
   - registry.cn-beijing.aliyuncs.com/labnow-oss/redpanda-connect
