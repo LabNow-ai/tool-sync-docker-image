@@ -23,10 +23,17 @@ env:
 
 
 jobs:
-  ## Sync all images defined in `task-sync-docker-images/images.yaml`
-  sync_images:
+  ## Sync all image definition files in `task-sync-docker-images/`
+  job-sync-images:
     # needs: []
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image_file:
+          - images-app.yaml
+          - images-containers.yaml
+          - images-cuda.yaml
+          - images-db.yaml
     steps:
       - uses: actions/checkout@v7
       - run: |
@@ -37,4 +44,4 @@ jobs:
             -v $(pwd):/tmp -w /tmp\
             labnow/docker-kit image-syncer --proc=8 --retries=2 \
               --auth /tmp/.github/workflows/auth.json \
-              --images /tmp/task-sync-docker-images/images-db.yaml
+              --images /tmp/task-sync-docker-images/${{ matrix.image_file }}
