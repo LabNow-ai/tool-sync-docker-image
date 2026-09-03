@@ -1,0 +1,34 @@
+# k3s
+# - ref1: https://github.com/k3s-io/k3s/releases
+# - ref2: https://docs.k3s.io/installation/airgap
+rancher/k3s:latest,v1.32.3-k3s1:
+ - quay.io/labnow/k3s
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/k3s
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/k3s
+
+
+# k3d: https://github.com/k3d-io/k3d/pkgs/container/k3d
+ghcr.io/k3d-io/k3d:latest,5-dind,5:
+ - quay.io/labnow/k3s
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/k3d
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/k3d
+
+
+# k3d-proxy:https://github.com/k3d-io/k3d/pkgs/container/k3d-proxy
+ghcr.io/k3d-io/k3d-proxy:latest,5:
+ - quay.io/labnow/k3s
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/k3d-proxy
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/k3d-proxy
+
+
+# k3d-tools: https://github.com/k3d-io/k3d/pkgs/container/k3d-tools
+ghcr.io/k3d-io/k3d-tools:latest,5:
+ - quay.io/labnow/k3s
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/k3d-tools
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/k3d-tools
+
+# kube-scheduler
+registry.k8s.io/kube-scheduler:/v\d+\.\d+\.\d+/:
+ - quay.io/labnow/kube-scheduler
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/kube-scheduler
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/kube-scheduler
