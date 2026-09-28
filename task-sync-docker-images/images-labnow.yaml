@@ -1,0 +1,3 @@
+quay.io/labnow/py-chem:latest:
+ - registry.cn-hangzhou.aliyuncs.com/labnow-oss/py-chem
+ - registry.cn-beijing.aliyuncs.com/labnow-oss/py-chem
