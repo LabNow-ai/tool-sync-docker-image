@@ -34,6 +34,7 @@ jobs:
           - images-containers.yaml
           - images-cuda.yaml
           - images-db.yaml
+          - images-labnow.yaml
     steps:
       - uses: actions/checkout@v7
       - run: |
